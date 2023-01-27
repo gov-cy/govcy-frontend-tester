@@ -24,8 +24,5 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: report
-        paths: |
-          reports/*.html
-          reports/*.txt
-          reports/*.png
+        paths: ["reports/index.html", "reports/reportJSON.txt"
         
