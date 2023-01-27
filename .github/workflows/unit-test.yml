@@ -1,0 +1,45 @@
+name: Unit test
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14
+    - name: Install dependencies
+      run: npm ci
+    - name: Test
+      run: npm test
+    - name: Store report
+      run: echo "Report: $(find -name 'index.html')"
+      env:
+        CI: true
+    - name: Upload report to artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: report
+        path: index.html
+    - name: Upload report to artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: report
+        path: index.html
+    - name: Store reportJSON.txt file
+      run: echo "Additional file: $(find -name 'reportJSON.txt')"
+      env:
+        CI: true
+    - name: Upload reportJSON.txt file to artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: additional_file
+        path: reportJSON.txt

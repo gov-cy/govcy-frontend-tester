@@ -1,0 +1,43 @@
+{
+  "name": "@gov-cy/govcy-frontend-tester",
+  "version": "1.0.0",
+  "description": "Front end automated tests based on gov.cy design system.",
+  "main": "./dist/govcy-frontend-tester.mjs",
+  "author": "DSF Team",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "test": "mocha --timeout 60000 --require @babel/register ./tests/**/*.test.js"
+  },
+  "keywords": [
+    "govcy",
+    "design system",
+    "accessibility",
+    "analysis",
+    "cli",
+    "report"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gov-cy/govcy-frontend-tester.git"
+  },
+  "homepage": "https://github.com/gov-cy/govcy-frontend-tester",
+  "dependencies": {
+    "handlebars": "^4.7.7",
+    "lighthouse": "^9.5.0",
+    "node-fetch": "^3.2.10",
+    "pa11y": "^6.2.3",
+    "puppeteer": "^13.5.2",
+    "semver": "^7.3.7"
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/register": "^7.18.9",
+    "chai": "^4.3.7",
+    "http-server": "^14.1.1",
+    "mocha": "^10.2.0"
+  }
+}
