@@ -20,19 +20,11 @@ jobs:
       run: npm ci
     - name: Test
       run: npm test
-    - name: Store report
-      run: echo "Report: $(find reports -name 'index.html' -exec echo {} \;)"
-      env:
-        CI: true
     - name: Upload report to artifact
       uses: actions/upload-artifact@v2
       with:
         name: report
         path: reports/index.html
-    - name: Store reportJSON.txt file
-      run: echo "Additional file: $(find reports -name 'reportJSON.txt' -exec echo {} \;)"
-      env:
-        CI: true
     - name: Upload reportJSON.txt file to artifact
       uses: actions/upload-artifact@v2
       with:
