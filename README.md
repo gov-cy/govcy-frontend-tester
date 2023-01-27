@@ -294,25 +294,25 @@ DSFTest.serviceDesignSystemVersion = `1.3.2`
  * Whether on not to get the head section
  * Default = `true`
  */
-performHeadSection = true;
+DSFTest.performHeadSection = true;
 
 /**
  * Whether on not to perform lighthouse checks
  * Default = `true`
  */
-performLighthouse = true;
+DSFTest.performLighthouse = true;
 
 /**
  * Whether on not to perform the DSF Checks defined under `DSFTestOptions`
  * Default = `true`
  */
-performDSFChecks = true;
+DSFTest.performDSFChecks = true;
 
 /**
  * Whether on not to perform the pa11y checks
  * Default = `true`
  */
-performPa11yChecks = true;
+DSFTest.performPa11yChecks = true;
 
 ```
 
