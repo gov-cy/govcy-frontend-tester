@@ -24,10 +24,8 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: report
-        path: reports/index.html
-    - name: Upload reportJSON.txt file to artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: reportJSON_file
-        path: reports/reportJSON.txt
+        paths: |
+          reports/*.html
+          reports/*.txt
+          reports/*.png
         
