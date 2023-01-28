@@ -23,7 +23,7 @@ The package currently can perform tests up to **version 1.3.2** of the design sy
 To install `govcy-frontend-tester`, run the following command:
 
 ```bash
-npm install govcy-frontend-tester
+npm install @gov-cy/govcy-frontend-tester
 ```
 
 ## Usage
@@ -37,7 +37,7 @@ To create a script with a scenario, create a `js` file (we recommend creating th
 To use the `govcy-frontend-tester` methods, you must first import the package with the following code:
 
 ```js
-import { DSFTesting } from 'your-package-name' 
+import { DSFTesting } from '@gov-cy/govcy-frontend-tester' 
 ```
 
 The scenario needs to be run on an async function. So include your scenario code as follows:
@@ -150,7 +150,7 @@ export MOCK_PASS=<password>
 Here is the sample script:
 
 ```js
-import {DSFTesting} from '../dist/govcy-frontend-tester.mjs';
+import { DSFTesting } from '@gov-cy/govcy-frontend-tester'
 
 
 (async () => {
@@ -341,7 +341,7 @@ DSFTest.DSFTestOptions[4.3.7.width.v1].attribute='width';
 DSFTest.DSFTestOptions[4.3.7.width.v1].testType='randomComputedStyleTest';
 ```
 
-Concerning the test types these are the supported types:
+The following test types are supported by the package:
 - **elementAttributeTest** gets the value of an element's attribute (based on the selector and attribute property) for the current page instance
 - **pageTitleTest** gets the page title for the current page instance
 - **countElementsTest** counts elements based on the selector property for the current page instance 
