@@ -130,7 +130,8 @@ the tests defined in `DSFTestOptions.tests` and adds a lighthouse page check
 
 *   `pageName` **[string][63]** The page name
 *   `lang` **[string][63]** Lang expected in html element
-*   `isError` **[boolean][64]** If the page has errors or not
+*   `isError` **[boolean][64]** if the page in an errors state (uses the error message and error summary component)
+*   `ignoreChecks` **[Array][65]** an array of stings for the ids of the checks to ignore (optional, default `[]`)
 
 ### validateUrl
 
@@ -214,7 +215,7 @@ Gets the property value of a computed style of an element of the page
 *   `selector` **[string][63]** The css selector of the element
 *   `property` **[string][63]** The property to get
 
-Returns **any** computed styles object (check out [https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle][65] for more)
+Returns **any** computed styles object (check out [https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle][66] for more)
 
 ### getRandomComputedStyle
 
@@ -227,7 +228,7 @@ Gets the property value of a computed style of a random element of the page base
 *   `hover` **[boolean][64]** If true hover over the element (optional, default `false`)
 *   `focus` **[boolean][64]** If true focus on the element (i.e. to get active state) (optional, default `false`)
 
-Returns **any** computed styles object (check out [https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle][65] for more)
+Returns **any** computed styles object (check out [https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle][66] for more)
 
 ### getElementAttributeArray
 
@@ -259,7 +260,7 @@ Default value = `false`
 ### lighthouseSettings
 
 default lighthouse settings
-more at [https://github.com/GoogleChrome/lighthouse/blob/master/docs/configuration.md][66]
+more at [https://github.com/GoogleChrome/lighthouse/blob/master/docs/configuration.md][67]
 Default value = `{onlyCategories: ["accessibility"],output: "csv",}`
 
 ### puppeteerSettings
@@ -486,6 +487,8 @@ The main report
 
 [64]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 
-[65]: https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
+[65]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
-[66]: https://github.com/GoogleChrome/lighthouse/blob/master/docs/configuration.md
+[66]: https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
+
+[67]: https://github.com/GoogleChrome/lighthouse/blob/master/docs/configuration.md

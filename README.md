@@ -232,6 +232,37 @@ Checkout what you can do with puppeteer at https://pptr.dev/.
 ### DSFTesting class
 The package main class used to interact with webpages through puppeteer and perform the tests. Check out the [class documentation](docs/govcy-frontend-tester.md) for more details. 
 
+#### DSFStandardPageTest
+
+This is the method that is used to perform the checks on a page. The method accepts the following parameters:
+
+```js
+/**
+ * @param {string} pageName The page name  
+ * @param {string} lang Lang expected in html element  
+ * @param {boolean} isError if the page in an errors state (uses the error message and error summary component)  
+ * @param {Array} [ignoreChecks=[]] an array of stings for the ids of the checks to ignore   
+ */ 
+```
+
+If you wish to ignore some checks for a specific page you can call the method using the `ignoreChecks` as follows:
+
+```js
+
+await dsfTesting.DSFStandardPageTest("Page title",'el',false
+    ,["4.3.5.meta.favicon.apple.exists", "4.3.5.meta.favicon.72x72.exists"]);
+```
+
+With the above code, the checks for "4.3.5.meta.favicon.apple.exists" and "4.3.5.meta.favicon.72x72.exists" will be ignored.
+
+Also note that the following configurations will affect which tests will be made by the method (more details below):
+
+- `serviceDesignSystemVersion`
+- `performHeadSection`
+- `performLighthouse`
+- `performDSFChecks`
+- `performPa11yChecks`
+
 ### Configurations
 You can change the configuration values to your needs before starting a test . Here are some example of overwriting the configuration values (for more details check out [class documentation](docs/govcy-frontend-tester.md)). 
 
@@ -460,5 +491,6 @@ If you have any questions or feedback, please feel free to reach out to us at [d
 ## Todo
 
 - Add more tests
+- Add check levels (0 = mandatory, 1 = intermediate, 2 = high )
 - Add linters (html, js, css)
 - Handle DSF design system known issues.

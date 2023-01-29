@@ -197,9 +197,10 @@ export class DSFTesting {
      * 
      * @param {string} pageName The page name  
      * @param {string} lang Lang expected in html element  
-     * @param {boolean} isError If the page has errors or not  
+     * @param {boolean} isError if the page in an errors state (uses the error message and error summary component)  
+     * @param {Array} [ignoreChecks=[]] an array of stings for the ids of the checks to ignore   
      */   
-    async DSFStandardPageTest(pageName, lang, isError) {
+    async DSFStandardPageTest(pageName, lang, isError,ignoreChecks=[]) {
         if (this.skipLog==false){
             console.log('Check \'' + pageName.toString() +'\' page ');
         }
@@ -217,9 +218,12 @@ export class DSFTesting {
         if (this.performHeadSection) {await this.getHeadSection(pageName,'');}
         
         // DSF test 
-        if (this.performLighthouse){
+        if (this.performDSFChecks){
             //for all tests
             for (const key in this.DSFTestOptions.tests) {
+                DSFChecksArea: {
+                // if this check is included in the `ignoreChecks` array
+                if (ignoreChecks.includes(key)) break DSFChecksArea;
                 let testValue = false;
                 //if version is defined see if check should be run (see more on https://www.npmjs.com/package/semver)
                 if  (!(this.DSFTestOptions.tests[key].version)
@@ -315,6 +319,7 @@ export class DSFTesting {
                             }
                         break;
                     }
+                }
                 }
             }        
         }
