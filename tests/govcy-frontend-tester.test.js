@@ -66,7 +66,8 @@ describe('Testing DSFTesting class', () => {
         //go to page
         await dsfTesting.page.goto('http://localhost:3000/index.html', { waitUntil: 'networkidle0', });
         //run the batch of tests and reports fo this page 
-        await dsfTesting.DSFStandardPageTest(pageName,'el');
+        await dsfTesting.DSFStandardPageTest(pageName,'el',false
+            ,["4.3.5.meta.favicon.apple.exists", "4.3.5.meta.favicon.72x72.exists"]);
         const reportJSON = dsfTesting.reportJSON;
         expect(reportJSON.pages[1].id).to.equal(pageName);
         dsfTesting.serviceDesignSystemVersion = correctDesignSystemVersion;
@@ -75,7 +76,18 @@ describe('Testing DSFTesting class', () => {
         const path = 'lighthouse-report.pdf';
         await dsfTesting.reportLighthouseFlow(path);
         expect(dsfTesting.reportJSON.lighthouse).to.equal(path);
-      });
+    });
+    it('5.2.2 `DSFStandardPageTest` with `ignoreChecks` defined works', async () => {
+        const reportJSON = dsfTesting.reportJSON;
+        //expect objects that are to be ignored to be = undefined
+        let checkObject = reportJSON.pages[1].checks.find(object => object.type === "4.3.5.meta.favicon.apple.exists");
+        expect(checkObject).to.equal(undefined);
+        checkObject = reportJSON.pages[1].checks.find(object => object.type === "4.3.5.meta.favicon.72x72.exists");
+        expect(checkObject).to.equal(undefined);
+        //expect object that should exist 
+        checkObject = reportJSON.pages[1].checks.find(object => object.type === "4.3.1.lang").type;
+        expect(checkObject).to.equal("4.3.1.lang");
+    });
     it('5.3 `DSFStandardPageTest` with perform options in false', async () => {
         const pageName = 'perform';
         dsfTesting.performHeadSection = false;
