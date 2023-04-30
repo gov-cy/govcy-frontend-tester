@@ -56,19 +56,20 @@
     *   [performLighthouse][52]
     *   [performDSFChecks][53]
     *   [performPa11yChecks][54]
-    *   [DSFTestOptions][55]
-    *   [timeout][56]
-        *   [Parameters][57]
-    *   [rgb2hex][58]
-        *   [Parameters][59]
-*   [DSFReportTemplate][60]
-    *   [mainReport][61]
+    *   [DSFCheckLevel][55]
+    *   [DSFTestOptions][56]
+    *   [timeout][57]
+        *   [Parameters][58]
+    *   [rgb2hex][59]
+        *   [Parameters][60]
+*   [DSFReportTemplate][61]
+    *   [mainReport][62]
 
 ## DSFTesting
 
 Can perform client side tests using puppeteer and other packages such as lighthouse and pa11y.
 
-Checkout what you can do with puppeteer at [https://pptr.dev/][62]
+Checkout what you can do with puppeteer at [https://pptr.dev/][63]
 
 ### startTest
 
@@ -76,8 +77,8 @@ Start the tests with this function. Will create instances for puppeteer page and
 
 #### Parameters
 
-*   `testName` **[string][63]** the name of the test
-*   `reportPath` **[string][63]** The path of the reports. Can be used to set the folder where the reports are saved (optional, default `""`)
+*   `testName` **[string][64]** the name of the test
+*   `reportPath` **[string][64]** The path of the reports. Can be used to set the folder where the reports are saved (optional, default `""`)
 
 ### endTest
 
@@ -99,9 +100,9 @@ Repeat string
 #### Parameters
 
 *   `count` **int**&#x20;
-*   `pattern` **[string][63]**&#x20;
+*   `pattern` **[string][64]**&#x20;
 
-Returns **[string][63]**&#x20;
+Returns **[string][64]**&#x20;
 
 ### addToReportJSON
 
@@ -109,13 +110,13 @@ Adds tests details to the report JSON to be used to populate the report
 
 #### Parameters
 
-*   `page` **[string][63]** The id of the page
-*   `type` **[string][63]** The type of the test
-*   `key` **[string][63]** A key for this test
+*   `page` **[string][64]** The id of the page
+*   `type` **[string][64]** The type of the test
+*   `key` **[string][64]** A key for this test
 *   `value` **any** The value returned by the test
-*   `condition` **[boolean][64]** The condition to test if true or false (optional, default `undefined`)
-*   `selector` **[string][63]** The html selector used in the test (optional, default `undefined`)
-*   `attribute` **[string][63]** The attribute used in the test (optional, default `undefined`)
+*   `condition` **[boolean][65]** The condition to test if true or false (optional, default `undefined`)
+*   `selector` **[string][64]** The html selector used in the test (optional, default `undefined`)
+*   `attribute` **[string][64]** The attribute used in the test (optional, default `undefined`)
 
 ### generateReport
 
@@ -128,10 +129,10 @@ the tests defined in `DSFTestOptions.tests` and adds a lighthouse page check
 
 #### Parameters
 
-*   `pageName` **[string][63]** The page name
-*   `lang` **[string][63]** Lang expected in html element
-*   `isError` **[boolean][64]** if the page in an errors state (uses the error message and error summary component)
-*   `ignoreChecks` **[Array][65]** an array of stings for the ids of the checks to ignore (optional, default `[]`)
+*   `pageName` **[string][64]** The page name
+*   `lang` **[string][64]** Lang expected in html element
+*   `isError` **[boolean][65]** if the page in an errors state (uses the error message and error summary component)
+*   `ignoreChecks` **[Array][66]** an array of stings for the ids of the checks to ignore (optional, default `[]`)
 
 ### validateUrl
 
@@ -139,8 +140,8 @@ Validates a URL is reachable
 
 #### Parameters
 
-*   `urlString` **[string][63]** the url path
-*   `isRelative` **[boolean][64]** if the path is relative or not (optional, default `false`)
+*   `urlString` **[string][64]** the url path
+*   `isRelative` **[boolean][65]** if the path is relative or not (optional, default `false`)
 
 Returns **any** true if page is accessible or false if not
 
@@ -150,15 +151,15 @@ Takes a screenshoot
 
 #### Parameters
 
-*   `page` **[string][63]** the page name the acion is made. This is used to generate the report (optional, default `''`)
+*   `page` **[string][64]** the page name the acion is made. This is used to generate the report (optional, default `''`)
 *   `width` **int** the width of the screenshoot
-*   `filename` **[string][63]** the name of the file to be saved. The path will be `this.reportPath + filename` (optional, default `''`)
+*   `filename` **[string][64]** the name of the file to be saved. The path will be `this.reportPath + filename` (optional, default `''`)
 
 ### doLighthouseA11YScore
 
 #### Parameters
 
-*   `pageURL` **[string][63]** the url of the page
+*   `pageURL` **[string][64]** the url of the page
 
 ### doLighthouseFlow
 
@@ -166,7 +167,7 @@ runs the lighthouse flow
 
 #### Parameters
 
-*   `pageURL` **[string][63]** the url of the page
+*   `pageURL` **[string][64]** the url of the page
 
 ### doLighthouseNavStart
 
@@ -174,7 +175,7 @@ starts the lighthouse navivation flow
 
 #### Parameters
 
-*   `stepName` **[string][63]** the step name
+*   `stepName` **[string][64]** the step name
 
 ### doLighthouseNavEnd
 
@@ -186,7 +187,7 @@ Creates the lighthouse flow report
 
 #### Parameters
 
-*   `path` **[string][63]** the report path in string. The path will be `this.reportPath + filename`
+*   `path` **[string][64]** the report path in string. The path will be `this.reportPath + filename`
 
 ### doPa11y
 
@@ -194,8 +195,8 @@ Creates the pa11y report. Uses the settings defined in `pa11ySettings`
 
 #### Parameters
 
-*   `page` **[string][63]** the page name the acion is made. Will be used as part of the path and to generate the report (optional, default `''`)
-*   `path` **[string][63]** the report path in string. The path will be `this.reportPath + filename` (optional, default `''`)
+*   `page` **[string][64]** the page name the acion is made. Will be used as part of the path and to generate the report (optional, default `''`)
+*   `path` **[string][64]** the report path in string. The path will be `this.reportPath + filename` (optional, default `''`)
 
 ### getHeadSection
 
@@ -203,8 +204,8 @@ gets only the head section and puts it in an HTML file
 
 #### Parameters
 
-*   `page` **[string][63]** the page name the acion is made. Will be used as part of the path and to generate the report (optional, default `''`)
-*   `path` **[string][63]** the report path in string. The path will be `this.reportPath + filename`
+*   `page` **[string][64]** the page name the acion is made. Will be used as part of the path and to generate the report (optional, default `''`)
+*   `path` **[string][64]** the report path in string. The path will be `this.reportPath + filename`
 
 ### getComputedStyle
 
@@ -212,10 +213,10 @@ Gets the property value of a computed style of an element of the page
 
 #### Parameters
 
-*   `selector` **[string][63]** The css selector of the element
-*   `property` **[string][63]** The property to get
+*   `selector` **[string][64]** The css selector of the element
+*   `property` **[string][64]** The property to get
 
-Returns **any** computed styles object (check out [https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle][66] for more)
+Returns **any** computed styles object (check out [https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle][67] for more)
 
 ### getRandomComputedStyle
 
@@ -223,12 +224,12 @@ Gets the property value of a computed style of a random element of the page base
 
 #### Parameters
 
-*   `selector` **[string][63]** The css selector of the element
-*   `property` **[string][63]** The property to get
-*   `hover` **[boolean][64]** If true hover over the element (optional, default `false`)
-*   `focus` **[boolean][64]** If true focus on the element (i.e. to get active state) (optional, default `false`)
+*   `selector` **[string][64]** The css selector of the element
+*   `property` **[string][64]** The property to get
+*   `hover` **[boolean][65]** If true hover over the element (optional, default `false`)
+*   `focus` **[boolean][65]** If true focus on the element (i.e. to get active state) (optional, default `false`)
 
-Returns **any** computed styles object (check out [https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle][66] for more)
+Returns **any** computed styles object (check out [https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle][67] for more)
 
 ### getElementAttributeArray
 
@@ -236,8 +237,8 @@ Gets the attributes from all the element found based on the `selector` query sel
 
 #### Parameters
 
-*   `selector` **[string][63]** The css selector of the element
-*   `attribute` **[string][63]** The attribute to get
+*   `selector` **[string][64]** The css selector of the element
+*   `attribute` **[string][64]** The attribute to get
 
 Returns **any** Array of attribute values
 
@@ -247,8 +248,8 @@ Gets the attribute from an the first element found based on the `selector` query
 
 #### Parameters
 
-*   `selector` **[string][63]** The css selector of the element
-*   `attribute` **[string][63]** The attribute to get
+*   `selector` **[string][64]** The css selector of the element
+*   `attribute` **[string][64]** The attribute to get
 
 Returns **any** attribute value
 
@@ -260,7 +261,7 @@ Default value = `false`
 ### lighthouseSettings
 
 default lighthouse settings
-more at [https://github.com/GoogleChrome/lighthouse/blob/master/docs/configuration.md][67]
+more at [https://github.com/GoogleChrome/lighthouse/blob/master/docs/configuration.md][68]
 Default value = `{onlyCategories: ["accessibility"],output: "csv",}`
 
 ### puppeteerSettings
@@ -279,7 +280,7 @@ Default value = `{standard: 'WCAG2AA',ignoreUrl: true,wait: 10000} `
 
 ### page
 
-The puppeteer page object. See more at  [https://pptr.dev/][62]
+The puppeteer page object. See more at  [https://pptr.dev/][63]
 
 ### reportPath
 
@@ -329,6 +330,14 @@ Default = `true`
 Whether on not to perform the pa11y checks
 Default = `true`
 
+### DSFCheckLevel
+
+Define which DSF checks to perform with the `DSFStandardPageTest` function based on check level.
+`0` performs the mandatory plus more advanced checks that probably will need to overwrite the selector
+`1` performs the mandatory checks only
+
+Default = `1`
+
 ### DSFTestOptions
 
 The tests options to be carried out by the `DSFStandardPageTest` function
@@ -347,9 +356,9 @@ Convert RGB colour string to hex
 
 #### Parameters
 
-*   `rgb` **[string][63]** The RGB value
+*   `rgb` **[string][64]** The RGB value
 
-Returns **[string][63]** The hex value
+Returns **[string][64]** The hex value
 
 ## DSFReportTemplate
 
@@ -467,28 +476,30 @@ The main report
 
 [54]: #performpa11ychecks
 
-[55]: #dsftestoptions
+[55]: #dsfchecklevel
 
-[56]: #timeout
+[56]: #dsftestoptions
 
-[57]: #parameters-17
+[57]: #timeout
 
-[58]: #rgb2hex
+[58]: #parameters-17
 
-[59]: #parameters-18
+[59]: #rgb2hex
 
-[60]: #dsfreporttemplate
+[60]: #parameters-18
 
-[61]: #mainreport
+[61]: #dsfreporttemplate
 
-[62]: https://pptr.dev/
+[62]: #mainreport
 
-[63]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[63]: https://pptr.dev/
 
-[64]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[64]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[65]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[65]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 
-[66]: https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
+[66]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
-[67]: https://github.com/GoogleChrome/lighthouse/blob/master/docs/configuration.md
+[67]: https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
+
+[68]: https://github.com/GoogleChrome/lighthouse/blob/master/docs/configuration.md

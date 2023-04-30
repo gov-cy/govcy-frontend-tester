@@ -323,7 +323,7 @@ DSFTest.skipLog = true;
  * What version of the design system was the service build on. 
  * This will make sure the correct checks are made 
  */
-DSFTest.serviceDesignSystemVersion = `1.3.2`
+DSFTest.serviceDesignSystemVersion = `2.1.1`
 
 /**
  * Whether on not to get the head section
@@ -349,6 +349,15 @@ DSFTest.performDSFChecks = true;
  */
 DSFTest.performPa11yChecks = true;
 
+
+/**
+ * Define which DSF checks to perform with the `DSFStandardPageTest` function based on check level. 
+ * `0` performs the mandatory plus more advanced checks that probably will need to overwrite the selector
+ * `1` performs the mandatory checks only
+ * 
+ * Default = `1`
+ */
+DSFTest.DSFCheckLevel = 1;
 ```
 
 #### Overwriting checks definition
@@ -358,6 +367,7 @@ The checks carried out by the `DSFStandardPageTest` method are defined under the
 'test_type': {
     'selector': '#mainContainer', //DOM selector to be used in the check
     'version' : '1 - 2', //Which versions of the design system this rule applies to. It uses the semver.satisfies as described in https://www.npmjs.com/package/semver
+    'level' : 1, //The DSFCheckLevel applicable for this test 1=mandatory, 0=mandatory plus more advanced checks
     'attribute':'width', //which attribute of the element to check
     'testType' : 'computedStyleTest', // the type of test to perform 
     'onError' : false, // if this should be fired on error only

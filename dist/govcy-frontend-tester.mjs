@@ -224,6 +224,7 @@ export class DSFTesting {
                 DSFChecksArea: {
                 // if this check is included in the `ignoreChecks` array
                 if (ignoreChecks.includes(key)) break DSFChecksArea;
+                if (this.DSFTestOptions.tests[key].level < this.DSFCheckLevel) break DSFChecksArea;
                 let testValue = false;
                 //if version is defined see if check should be run (see more on https://www.npmjs.com/package/semver)
                 if  (!(this.DSFTestOptions.tests[key].version)
@@ -719,6 +720,15 @@ export class DSFTesting {
     performPa11yChecks = true;
 
     /**
+     * Define which DSF checks to perform with the `DSFStandardPageTest` function based on check level. 
+     * `0` performs the mandatory plus more advanced checks that probably will need to overwrite the selector
+     * `1` performs the mandatory checks only
+     * 
+     * Default = `1`
+     */
+    DSFCheckLevel = 1;
+    
+    /**
      * The tests options to be carried out by the `DSFStandardPageTest` function
      */
     DSFTestOptions = {
@@ -726,6 +736,7 @@ export class DSFTesting {
             '4.3.1.viewport': {'id':'4.3.1.viewport', 
                 'selector': 'head > meta[name="viewport"]',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'content',
                 'testType' : 'elementAttributeTest',
                 'onError' : false,
@@ -734,6 +745,7 @@ export class DSFTesting {
             ,'4.3.1.lang': {'id':'4.3.1.lang', 
                 'selector': 'html',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'lang',
                 'testType' : 'elementAttributeTest',
                 'onError' : false,
@@ -742,6 +754,7 @@ export class DSFTesting {
             ,'4.3.2.title': {'id':'4.3.2.title', 
                 'selector': '',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'',
                 'testType' : 'pageTitleTest',
                 'onError' : false,
@@ -750,6 +763,7 @@ export class DSFTesting {
             ,'4.3.2.description': {'id':'4.3.2.description', 
                 'selector': 'head > meta[name="description"]',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'content',
                 'testType' : 'elementAttributeTest',
                 'onError' : false,
@@ -757,6 +771,7 @@ export class DSFTesting {
             },'4.3.2.description.count': {
                 'selector': 'head > meta[name="description"]',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'',
                 'testType' : 'countElementsTest',
                 'onError' : false,
@@ -765,6 +780,7 @@ export class DSFTesting {
             ,'4.3.2.title.count': {
                 'selector': 'head > title',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'',
                 'testType' : 'countElementsTest',
                 'onError' : false,
@@ -773,6 +789,7 @@ export class DSFTesting {
             ,'4.3.3.meta.og:url.count': {
                 'selector': 'head > meta[property="og:url"]',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'',
                 'testType' : 'countElementsTest',
                 'onError' : false,
@@ -781,6 +798,7 @@ export class DSFTesting {
             ,'4.3.3.meta.og:type.count': {
                 'selector': 'head > meta[property="og:type"]',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'',
                 'testType' : 'countElementsTest',
                 'onError' : false,
@@ -789,6 +807,7 @@ export class DSFTesting {
             ,'4.3.3.meta.og:image.count': {
                 'selector': 'head > meta[property="og:image"]',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'',
                 'testType' : 'countElementsTest',
                 'onError' : false,
@@ -797,6 +816,7 @@ export class DSFTesting {
             ,'4.3.3.meta.og:site_name.count': {
                 'selector': 'head > meta[property="og:site_name"]',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'',
                 'testType' : 'countElementsTest',
                 'onError' : false,
@@ -805,6 +825,7 @@ export class DSFTesting {
             ,'4.3.3.meta.og:title.count': {
                 'selector': 'head > meta[property="og:title"]',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'',
                 'testType' : 'countElementsTest',
                 'onError' : false,
@@ -813,6 +834,7 @@ export class DSFTesting {
             ,'4.3.3.meta.og:description.count': {
                 'selector': 'head > meta[property="og:description"]',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'',
                 'testType' : 'countElementsTest',
                 'onError' : false,
@@ -821,6 +843,7 @@ export class DSFTesting {
             ,'4.3.3.meta.twitter:title.count': {
                 'selector': 'head > meta[property="twitter:title"]',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'',
                 'testType' : 'countElementsTest',
                 'onError' : false,
@@ -829,6 +852,7 @@ export class DSFTesting {
             ,'4.3.3.meta.twitter:description.count': {
                 'selector': 'head > meta[property="twitter:description"]',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'',
                 'testType' : 'countElementsTest',
                 'onError' : false,
@@ -837,6 +861,7 @@ export class DSFTesting {
             ,'4.3.3.meta.twitter:card.count': {
                 'selector': 'head > meta[property="twitter:card"]',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'',
                 'testType' : 'countElementsTest',
                 'onError' : false,
@@ -845,6 +870,7 @@ export class DSFTesting {
             ,'4.3.3.meta.twitter:url.count': {
                 'selector': 'head > meta[property="twitter:url"]',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'',
                 'testType' : 'countElementsTest',
                 'onError' : false,
@@ -853,6 +879,7 @@ export class DSFTesting {
             ,'4.3.3.meta.twitter:image.count': {
                 'selector': 'head > meta[property="twitter:image"]',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'',
                 'testType' : 'countElementsTest',
                 'onError' : false,
@@ -861,6 +888,7 @@ export class DSFTesting {
             ,'4.3.3.meta.twitter:image.count': {
                 'selector': 'head > meta[property="twitter:image"]',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'',
                 'testType' : 'countElementsTest',
                 'onError' : false,
@@ -869,6 +897,7 @@ export class DSFTesting {
             ,'4.3.4.manifest.exists': {
                 'selector': 'head > link[rel="manifest"]',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'href',
                 'testType' : 'elementAttributeTest',
                 'onError' : false,
@@ -877,6 +906,7 @@ export class DSFTesting {
             ,'4.3.4.theme.color': {
                 'selector': 'head > meta[name="theme-color"]',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'content',
                 'testType' : 'elementAttributeTest',
                 'onError' : false,
@@ -885,6 +915,7 @@ export class DSFTesting {
             ,'4.3.5.meta.og:image.exists': {
                 'selector': 'head > meta[property="og:image"]',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'content',
                 'testType' : 'elementAttributeTest',
                 'onError' : false,
@@ -893,6 +924,7 @@ export class DSFTesting {
             ,'4.3.5.meta.twitter:image.exists': {
                 'selector': 'head > meta[property="twitter:image"]',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'content',
                 'testType' : 'elementAttributeTest',
                 'onError' : false,
@@ -901,6 +933,7 @@ export class DSFTesting {
             ,'4.3.5.meta.favicon.48x48.exists': {
                 'selector': 'head > link[rel="icon"][sizes="48x48"]',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'href',
                 'testType' : 'elementAttributeTest',
                 'onError' : false,
@@ -909,6 +942,7 @@ export class DSFTesting {
             ,'4.3.5.meta.favicon.32x32.exists': {
                 'selector': 'head > link[rel="icon"][sizes="32x32"]',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'href',
                 'testType' : 'elementAttributeTest',
                 'onError' : false,
@@ -917,6 +951,7 @@ export class DSFTesting {
             ,'4.3.5.meta.favicon.16x16.exists': {
                 'selector': 'head > link[rel="icon"][sizes="16x16"]',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'href',
                 'testType' : 'elementAttributeTest',
                 'onError' : false,
@@ -925,6 +960,7 @@ export class DSFTesting {
             ,'4.3.5.meta.favicon.144x144.exists': {
                 'selector': 'head > link[rel="apple-touch-icon-precomposed"][sizes="144x144"]',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'href',
                 'testType' : 'elementAttributeTest',
                 'onError' : false,
@@ -933,6 +969,7 @@ export class DSFTesting {
             ,'4.3.5.meta.favicon.120x120.exists': {
                 'selector': 'head > link[rel="apple-touch-icon-precomposed"][sizes="120x120"]',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'href',
                 'testType' : 'elementAttributeTest',
                 'onError' : false,
@@ -941,6 +978,7 @@ export class DSFTesting {
             ,'4.3.5.meta.favicon.114x114.exists': {
                 'selector': 'head > link[rel="apple-touch-icon-precomposed"][sizes="114x114"]',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'href',
                 'testType' : 'elementAttributeTest',
                 'onError' : false,
@@ -949,6 +987,7 @@ export class DSFTesting {
             ,'4.3.5.meta.favicon.72x72.exists': {
                 'selector': 'head > link[rel="apple-touch-icon-precomposed"][sizes="72x72"]',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'href',
                 'testType' : 'elementAttributeTest',
                 'onError' : false,
@@ -957,6 +996,7 @@ export class DSFTesting {
             ,'4.3.5.meta.favicon.apple.exists': {
                 'selector': 'head > link[rel="apple-touch-icon-precomposed"]',
                 'version' : '>=1',
+                'level' : 1,
                 'attribute':'href',
                 'testType' : 'elementAttributeTest',
                 'onError' : false,
@@ -965,6 +1005,7 @@ export class DSFTesting {
             ,'4.3.7.width.v1': {
                 'selector': '#mainContainer',
                 'version' : '1 - 2',
+                'level' : 0,
                 'attribute':'width',
                 'testType' : 'computedStyleTest',
                 'onError' : false,
@@ -974,6 +1015,7 @@ export class DSFTesting {
             ,'4.3.6.h1.color.v1': {
                 'selector': 'main h1',
                 'version' : '1 - 2',
+                'level' : 0,
                 'attribute':'color',
                 'testType' : 'randomComputedStyleTest',
                 'onError' : false,
@@ -982,6 +1024,7 @@ export class DSFTesting {
             ,'4.3.6.h2.color.v1': {
                 'selector': 'main h2',
                 'version' : '1 - 2',
+                'level' : 0,
                 'attribute':'color',
                 'testType' : 'randomComputedStyleTest',
                 'onError' : false,
@@ -990,6 +1033,7 @@ export class DSFTesting {
             ,'4.3.6.h3.color.v1': {
                 'selector': 'main h3',
                 'version' : '1 - 2',
+                'level' : 0,
                 'attribute':'color',
                 'testType' : 'randomComputedStyleTest',
                 'onError' : false,
@@ -998,6 +1042,7 @@ export class DSFTesting {
             ,'4.3.6.h4.color.v1': {
                 'selector': 'main h4',
                 'version' : '1 - 2',
+                'level' : 0,
                 'attribute':'color',
                 'testType' : 'randomComputedStyleTest',
                 'onError' : false,
@@ -1006,6 +1051,7 @@ export class DSFTesting {
             ,'4.3.6.h5.color.v1': {
                 'selector': 'main h5',
                 'version' : '1 - 2',
+                'level' : 0,
                 'attribute':'color',
                 'testType' : 'randomComputedStyleTest',
                 'onError' : false,
@@ -1014,6 +1060,7 @@ export class DSFTesting {
             ,'4.3.6.h6.color.v1': {
                 'selector': 'main h6',
                 'version' : '1 - 2',
+                'level' : 0,
                 'attribute':'color',
                 'testType' : 'randomComputedStyleTest',
                 'onError' : false,
@@ -1022,6 +1069,7 @@ export class DSFTesting {
             ,'4.3.6.p.color.v1': {
                 'selector': 'main',
                 'version' : '1 - 2',
+                'level' : 0,
                 'attribute':'color',
                 'testType' : 'randomComputedStyleTest',
                 'onError' : false,
@@ -1030,6 +1078,7 @@ export class DSFTesting {
             ,'4.3.6.button-primary.background-color.v1': {
                 'selector': 'main button.govcy-btn-primary',
                 'version' : '1 - 2',
+                'level' : 0,
                 'attribute':'background-color',
                 'testType' : 'randomComputedStyleTest',
                 'onError' : false,
@@ -1038,6 +1087,7 @@ export class DSFTesting {
             ,'4.3.6.a.color.v1': {
                 'selector': 'main a',
                 'version' : '1 - 2',
+                'level' : 0,
                 'attribute':'color',
                 'testType' : 'randomComputedStyleTest',
                 'onError' : false,
@@ -1046,6 +1096,7 @@ export class DSFTesting {
             ,'4.3.6.a.color.hover.v1': {
                 'selector': 'main a',
                 'version' : '1 - 2',
+                'level' : 0,
                 'attribute':'color',
                 'testType' : 'randomComputedStyleTest',
                 'onError' : false,
@@ -1055,6 +1106,7 @@ export class DSFTesting {
             ,'4.3.6.a.color.focus.v1': {
                 'selector': 'main a',
                 'version' : '1 - 2',
+                'level' : 0,
                 'attribute':'color',
                 'testType' : 'randomComputedStyleTest',
                 'onError' : false,
@@ -1065,6 +1117,7 @@ export class DSFTesting {
             ,'4.3.6.error-link.color.v1': {
                 'selector': '.govcy-alert-error a',
                 'version' : '1 - 2',
+                'level' : 0,
                 'attribute':'color',
                 'testType' : 'randomComputedStyleTest',
                 'onError' : true,
@@ -1073,6 +1126,7 @@ export class DSFTesting {
             ,'4.3.6.error-link.color.hover.v1': {
                 'selector': '.govcy-alert-error a',
                 'version' : '1 - 2',
+                'level' : 0,
                 'attribute':'color',
                 'testType' : 'randomComputedStyleTest',
                 'onError' : true,
@@ -1082,6 +1136,7 @@ export class DSFTesting {
             ,'4.3.6.error-link.color.focus.v1': {
                 'selector': '.govcy-alert-error a',
                 'version' : '1 - 2',
+                'level' : 0,
                 'attribute':'background-color',
                 'testType' : 'randomComputedStyleTest',
                 'onError' : true,
@@ -1092,6 +1147,7 @@ export class DSFTesting {
             ,'4.3.6.hint.color.v1': {
                 'selector': 'main .govcy-hint',
                 'version' : '1 - 2',
+                'level' : 0,
                 'attribute':'color',
                 'testType' : 'randomComputedStyleTest',
                 'onError' : false,
@@ -1100,6 +1156,7 @@ export class DSFTesting {
             ,'4.3.6.header.color.v1': {
                 'selector': 'header .govcy-bg-primary',
                 'version' : '1 - 2',
+                'level' : 0,
                 'attribute':'background-color',
                 'testType' : 'randomComputedStyleTest',
                 'onError' : false,
@@ -1108,6 +1165,7 @@ export class DSFTesting {
             ,'4.3.6.footer.color.v1': {
                 'selector': '.govcy-container-fluid.govcy-br-top-8.govcy-br-top-primary.govcy-p-3.govcy-bg-light.govcy-d-print-none',
                 'version' : '1 - 2',
+                'level' : 0,
                 'attribute':'background-color',
                 'testType' : 'randomComputedStyleTest',
                 'onError' : false,
@@ -1116,6 +1174,7 @@ export class DSFTesting {
             ,'4.3.6.footer-link.color.v1': {
                 'selector': 'footer a',
                 'version' : '1 - 2',
+                'level' : 0,
                 'attribute':'color',
                 'testType' : 'randomComputedStyleTest',
                 'onError' : false,
@@ -1124,6 +1183,7 @@ export class DSFTesting {
             ,'4.3.6.footer-link.color.focus.v1': {
                 'selector': 'footer a',
                 'version' : '1 - 2',
+                'level' : 0,
                 'attribute':'background-color',
                 'testType' : 'randomComputedStyleTest',
                 'onError' : false,
@@ -1134,6 +1194,7 @@ export class DSFTesting {
             ,'4.3.6.back-link.color.v1': {
                 'selector': '#beforeMainContainer a',
                 'version' : '1 - 2',
+                'level' : 0,
                 'attribute':'color',
                 'testType' : 'randomComputedStyleTest',
                 'onError' : false,
@@ -1142,6 +1203,7 @@ export class DSFTesting {
             ,'4.3.6.back-link.color.focus.v1': {
                 'selector': '#beforeMainContainer a',
                 'version' : '1 - 2',
+                'level' : 0,
                 'attribute':'background-color',
                 'testType' : 'randomComputedStyleTest',
                 'onError' : false,
