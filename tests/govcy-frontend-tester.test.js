@@ -60,6 +60,15 @@ describe('Testing DSFTesting class', () => {
         const reportJSON = dsfTesting.reportJSON;
         expect(reportJSON.pages[0].id).to.equal(pageName);
     });
+    it('5.1.1 `DSFStandardPageTest` with `DSFCheckLevel= 1` works', async () => {
+        const reportJSON = dsfTesting.reportJSON;
+        //expect objects that are to be ignored to be = undefined
+        let checkObject = reportJSON.pages[0].checks.find(object => object.type === "4.3.7.width.v1");
+        expect(checkObject).to.equal(undefined);
+        //expect object that should exist 
+        checkObject = reportJSON.pages[0].checks.find(object => object.type === "4.3.1.lang").type;
+        expect(checkObject).to.equal("4.3.1.lang");
+    });
     it('5.2 `DSFStandardPageTest` with version changed', async () => {
         const pageName = 'version100';
         dsfTesting.serviceDesignSystemVersion = '100.0.0';
@@ -94,6 +103,7 @@ describe('Testing DSFTesting class', () => {
         dsfTesting.performLighthouse = false;
         dsfTesting.performDSFChecks = false;
         dsfTesting.performPa11yChecks = false;
+        dsfTesting.DSFCheckLevel = 0;
         //go to page
         await dsfTesting.page.goto('http://localhost:3000/index.html', { waitUntil: 'networkidle0', });
         //run the batch of tests and reports fo this page 
@@ -112,6 +122,27 @@ describe('Testing DSFTesting class', () => {
         dsfTesting.performPa11yChecks = true;
     });
 
+    it('5.4 `DSFStandardPageTest` with `DSFCheckLevel = 1`', async () => {
+        const pageName = 'Level_1';
+        dsfTesting.performHeadSection = false;
+        dsfTesting.performLighthouse = false;
+        dsfTesting.performDSFChecks = true;
+        dsfTesting.performPa11yChecks = false;
+        dsfTesting.DSFCheckLevel = 0;
+        //go to page
+        await dsfTesting.page.goto('http://localhost:3000/index.html', { waitUntil: 'networkidle0', });
+        //run the batch of tests and reports fo this page 
+        await dsfTesting.DSFStandardPageTest(pageName,'el');
+        const reportJSON = dsfTesting.reportJSON;
+        //expect objects that were to be ignored if DSFCheckLevel was 1
+        let checkObject = reportJSON.pages[3].checks.find(object => object.type === "4.3.7.width.v1").type;
+        expect(checkObject).to.equal("4.3.7.width.v1");
+
+        dsfTesting.performHeadSection = true;
+        dsfTesting.performLighthouse = true;
+        dsfTesting.performDSFChecks = true;
+        dsfTesting.performPa11yChecks = true;
+    });
     
     it('6.1 `validateUrl` should return true if the URL is reachable', async () => {
         const isValid = await dsfTesting.validateUrl('http://localhost:3000/index.html');
@@ -231,10 +262,10 @@ describe('Testing DSFTesting class', () => {
     });
     it('9.4 `DSFStandardPageTest` at least one check run of testType : `computedStyleTest`', async () => {
         const reportJSON = dsfTesting.reportJSON;
-        const checkObject = reportJSON.pages[0].checks.find(object => object.type === "4.3.7.width.v1");
+        const checkObject = reportJSON.pages[3].checks.find(object => object.type === "4.3.7.width.v1");
         expect(checkObject).to.deep.equal({
             'type': "4.3.7.width.v1",
-            'key': 'root4.3.7.width.v1',
+            'key': 'Level_14.3.7.width.v1',
             'value': '1280px',
             'isText': true,
             'isFile': false,
@@ -250,10 +281,10 @@ describe('Testing DSFTesting class', () => {
     });
     it('9.5 `DSFStandardPageTest` at least one check run of testType : `randomComputedStyleTest`', async () => {
         const reportJSON = dsfTesting.reportJSON;
-        const checkObject = reportJSON.pages[0].checks.find(object => object.type === "4.3.6.h1.color.v1");
+        const checkObject = reportJSON.pages[3].checks.find(object => object.type === "4.3.6.h1.color.v1");
         expect(checkObject).to.deep.equal({
             'type': "4.3.6.h1.color.v1",
-            'key': 'root4.3.6.h1.color.v1',
+            'key': 'Level_14.3.6.h1.color.v1',
             'value': 'rgb(39, 37, 37)',
             'isText': true,
             'isFile': false,
