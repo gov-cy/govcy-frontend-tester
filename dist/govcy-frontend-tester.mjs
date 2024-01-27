@@ -395,7 +395,7 @@ export class DSFTesting {
         //set view port (resolution)
         await this.page.setViewport({ width: width, height: 100, deviceScaleFactor: 1, });
         //construct key for report
-        const key = page + (filename!=''?'.':'')+ filename + '.' + width ;
+        const key = page.replaceAll("/", '_').replaceAll("?", '_') + (filename!=''?'.':'')+ filename + '.' + width ;
         //construct filename
         const fname = key +'.png'
         //take screenshoot
@@ -490,7 +490,8 @@ export class DSFTesting {
         Object.assign(
         {
             browser:this.context,
-            page: this.page
+            page: this.page,
+            hideElements: this.pa11yHideElements
         }, this.pa11ySettings));
         //construct key for report
         const key = page + '.pa11y' + (path!=''?'.':'')+ path;
@@ -514,7 +515,7 @@ export class DSFTesting {
      */
     async getHeadSection(page='',path) {
         //construct key for report
-        const key = page + '.head' + (path!=''?'.':'')+ path;
+        const key = page.replaceAll("/", '_').replaceAll("?", '_') + '.head' + (path!=''?'.':'')+ path;
         //construct filename
         const fname = key +'.txt'
         //get head section
@@ -653,6 +654,12 @@ export class DSFTesting {
      * Default value = `{standard: 'WCAG2AA',ignoreUrl: true,wait: 10000} `
      */
     pa11ySettings = {standard: 'WCAG2AA',ignoreUrl: true,wait: 10000};
+    
+    /**
+     * Default pa11y hideElements
+     * Default value = `""`
+     */
+    pa11yHideElements = "";
 
     /**
      * The puppeteer page object. See more at  https://pptr.dev/

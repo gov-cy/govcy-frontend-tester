@@ -45,31 +45,32 @@
     *   [puppeteerSettings][41]
     *   [lighthouseFlowConfigContext][42]
     *   [pa11ySettings][43]
-    *   [page][44]
-    *   [reportPath][45]
-    *   [isIncognito][46]
-    *   [reportJSON][47]
-    *   [screenshotWidths][48]
-    *   [skipLog][49]
-    *   [serviceDesignSystemVersion][50]
-    *   [performHeadSection][51]
-    *   [performLighthouse][52]
-    *   [performDSFChecks][53]
-    *   [performPa11yChecks][54]
-    *   [DSFCheckLevel][55]
-    *   [DSFTestOptions][56]
-    *   [timeout][57]
-        *   [Parameters][58]
-    *   [rgb2hex][59]
-        *   [Parameters][60]
-*   [DSFReportTemplate][61]
-    *   [mainReport][62]
+    *   [pa11yHideElements][44]
+    *   [page][45]
+    *   [reportPath][46]
+    *   [isIncognito][47]
+    *   [reportJSON][48]
+    *   [screenshotWidths][49]
+    *   [skipLog][50]
+    *   [serviceDesignSystemVersion][51]
+    *   [performHeadSection][52]
+    *   [performLighthouse][53]
+    *   [performDSFChecks][54]
+    *   [performPa11yChecks][55]
+    *   [DSFCheckLevel][56]
+    *   [DSFTestOptions][57]
+    *   [timeout][58]
+        *   [Parameters][59]
+    *   [rgb2hex][60]
+        *   [Parameters][61]
+*   [DSFReportTemplate][62]
+    *   [mainReport][63]
 
 ## DSFTesting
 
 Can perform client side tests using puppeteer and other packages such as lighthouse and pa11y.
 
-Checkout what you can do with puppeteer at [https://pptr.dev/][63]
+Checkout what you can do with puppeteer at [https://pptr.dev/][64]
 
 ### startTest
 
@@ -77,8 +78,8 @@ Start the tests with this function. Will create instances for puppeteer page and
 
 #### Parameters
 
-*   `testName` **[string][64]** the name of the test
-*   `reportPath` **[string][64]** The path of the reports. Can be used to set the folder where the reports are saved (optional, default `""`)
+*   `testName` **[string][65]** the name of the test
+*   `reportPath` **[string][65]** The path of the reports. Can be used to set the folder where the reports are saved (optional, default `""`)
 
 ### endTest
 
@@ -100,9 +101,9 @@ Repeat string
 #### Parameters
 
 *   `count` **int**&#x20;
-*   `pattern` **[string][64]**&#x20;
+*   `pattern` **[string][65]**&#x20;
 
-Returns **[string][64]**&#x20;
+Returns **[string][65]**&#x20;
 
 ### addToReportJSON
 
@@ -110,13 +111,13 @@ Adds tests details to the report JSON to be used to populate the report
 
 #### Parameters
 
-*   `page` **[string][64]** The id of the page
-*   `type` **[string][64]** The type of the test
-*   `key` **[string][64]** A key for this test
+*   `page` **[string][65]** The id of the page
+*   `type` **[string][65]** The type of the test
+*   `key` **[string][65]** A key for this test
 *   `value` **any** The value returned by the test
-*   `condition` **[boolean][65]** The condition to test if true or false (optional, default `undefined`)
-*   `selector` **[string][64]** The html selector used in the test (optional, default `undefined`)
-*   `attribute` **[string][64]** The attribute used in the test (optional, default `undefined`)
+*   `condition` **[boolean][66]** The condition to test if true or false (optional, default `undefined`)
+*   `selector` **[string][65]** The html selector used in the test (optional, default `undefined`)
+*   `attribute` **[string][65]** The attribute used in the test (optional, default `undefined`)
 
 ### generateReport
 
@@ -129,10 +130,10 @@ the tests defined in `DSFTestOptions.tests` and adds a lighthouse page check
 
 #### Parameters
 
-*   `pageName` **[string][64]** The page name
-*   `lang` **[string][64]** Lang expected in html element
-*   `isError` **[boolean][65]** if the page in an errors state (uses the error message and error summary component)
-*   `ignoreChecks` **[Array][66]** an array of stings for the ids of the checks to ignore (optional, default `[]`)
+*   `pageName` **[string][65]** The page name
+*   `lang` **[string][65]** Lang expected in html element
+*   `isError` **[boolean][66]** if the page in an errors state (uses the error message and error summary component)
+*   `ignoreChecks` **[Array][67]** an array of stings for the ids of the checks to ignore (optional, default `[]`)
 
 ### validateUrl
 
@@ -140,8 +141,8 @@ Validates a URL is reachable
 
 #### Parameters
 
-*   `urlString` **[string][64]** the url path
-*   `isRelative` **[boolean][65]** if the path is relative or not (optional, default `false`)
+*   `urlString` **[string][65]** the url path
+*   `isRelative` **[boolean][66]** if the path is relative or not (optional, default `false`)
 
 Returns **any** true if page is accessible or false if not
 
@@ -151,15 +152,15 @@ Takes a screenshoot
 
 #### Parameters
 
-*   `page` **[string][64]** the page name the acion is made. This is used to generate the report (optional, default `''`)
+*   `page` **[string][65]** the page name the acion is made. This is used to generate the report (optional, default `''`)
 *   `width` **int** the width of the screenshoot
-*   `filename` **[string][64]** the name of the file to be saved. The path will be `this.reportPath + filename` (optional, default `''`)
+*   `filename` **[string][65]** the name of the file to be saved. The path will be `this.reportPath + filename` (optional, default `''`)
 
 ### doLighthouseA11YScore
 
 #### Parameters
 
-*   `pageURL` **[string][64]** the url of the page
+*   `pageURL` **[string][65]** the url of the page
 
 ### doLighthouseFlow
 
@@ -167,7 +168,7 @@ runs the lighthouse flow
 
 #### Parameters
 
-*   `pageURL` **[string][64]** the url of the page
+*   `pageURL` **[string][65]** the url of the page
 
 ### doLighthouseNavStart
 
@@ -175,7 +176,7 @@ starts the lighthouse navivation flow
 
 #### Parameters
 
-*   `stepName` **[string][64]** the step name
+*   `stepName` **[string][65]** the step name
 
 ### doLighthouseNavEnd
 
@@ -187,7 +188,7 @@ Creates the lighthouse flow report
 
 #### Parameters
 
-*   `path` **[string][64]** the report path in string. The path will be `this.reportPath + filename`
+*   `path` **[string][65]** the report path in string. The path will be `this.reportPath + filename`
 
 ### doPa11y
 
@@ -195,8 +196,8 @@ Creates the pa11y report. Uses the settings defined in `pa11ySettings`
 
 #### Parameters
 
-*   `page` **[string][64]** the page name the acion is made. Will be used as part of the path and to generate the report (optional, default `''`)
-*   `path` **[string][64]** the report path in string. The path will be `this.reportPath + filename` (optional, default `''`)
+*   `page` **[string][65]** the page name the acion is made. Will be used as part of the path and to generate the report (optional, default `''`)
+*   `path` **[string][65]** the report path in string. The path will be `this.reportPath + filename` (optional, default `''`)
 
 ### getHeadSection
 
@@ -204,8 +205,8 @@ gets only the head section and puts it in an HTML file
 
 #### Parameters
 
-*   `page` **[string][64]** the page name the acion is made. Will be used as part of the path and to generate the report (optional, default `''`)
-*   `path` **[string][64]** the report path in string. The path will be `this.reportPath + filename`
+*   `page` **[string][65]** the page name the acion is made. Will be used as part of the path and to generate the report (optional, default `''`)
+*   `path` **[string][65]** the report path in string. The path will be `this.reportPath + filename`
 
 ### getComputedStyle
 
@@ -213,10 +214,10 @@ Gets the property value of a computed style of an element of the page
 
 #### Parameters
 
-*   `selector` **[string][64]** The css selector of the element
-*   `property` **[string][64]** The property to get
+*   `selector` **[string][65]** The css selector of the element
+*   `property` **[string][65]** The property to get
 
-Returns **any** computed styles object (check out [https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle][67] for more)
+Returns **any** computed styles object (check out [https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle][68] for more)
 
 ### getRandomComputedStyle
 
@@ -224,12 +225,12 @@ Gets the property value of a computed style of a random element of the page base
 
 #### Parameters
 
-*   `selector` **[string][64]** The css selector of the element
-*   `property` **[string][64]** The property to get
-*   `hover` **[boolean][65]** If true hover over the element (optional, default `false`)
-*   `focus` **[boolean][65]** If true focus on the element (i.e. to get active state) (optional, default `false`)
+*   `selector` **[string][65]** The css selector of the element
+*   `property` **[string][65]** The property to get
+*   `hover` **[boolean][66]** If true hover over the element (optional, default `false`)
+*   `focus` **[boolean][66]** If true focus on the element (i.e. to get active state) (optional, default `false`)
 
-Returns **any** computed styles object (check out [https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle][67] for more)
+Returns **any** computed styles object (check out [https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle][68] for more)
 
 ### getElementAttributeArray
 
@@ -237,8 +238,8 @@ Gets the attributes from all the element found based on the `selector` query sel
 
 #### Parameters
 
-*   `selector` **[string][64]** The css selector of the element
-*   `attribute` **[string][64]** The attribute to get
+*   `selector` **[string][65]** The css selector of the element
+*   `attribute` **[string][65]** The attribute to get
 
 Returns **any** Array of attribute values
 
@@ -248,8 +249,8 @@ Gets the attribute from an the first element found based on the `selector` query
 
 #### Parameters
 
-*   `selector` **[string][64]** The css selector of the element
-*   `attribute` **[string][64]** The attribute to get
+*   `selector` **[string][65]** The css selector of the element
+*   `attribute` **[string][65]** The attribute to get
 
 Returns **any** attribute value
 
@@ -261,7 +262,7 @@ Default value = `false`
 ### lighthouseSettings
 
 default lighthouse settings
-more at [https://github.com/GoogleChrome/lighthouse/blob/master/docs/configuration.md][68]
+more at [https://github.com/GoogleChrome/lighthouse/blob/master/docs/configuration.md][69]
 Default value = `{onlyCategories: ["accessibility"],output: "csv",}`
 
 ### puppeteerSettings
@@ -278,9 +279,15 @@ Default lighthouse flow settings
 Default pa11y settings
 Default value = `{standard: 'WCAG2AA',ignoreUrl: true,wait: 10000} `
 
+### pa11yHideElements
+
+Default pa11y hideElements. These elements will be ignored when running accessibility checks
+Default value = `""`
+Example to ignore DS known issues `DSFTest.pa11yHideElements = "html > body > div:nth-child(2) > div > div > header > form, #culture-picker";`
+
 ### page
 
-The puppeteer page object. See more at  [https://pptr.dev/][63]
+The puppeteer page object. See more at  [https://pptr.dev/][64]
 
 ### reportPath
 
@@ -356,9 +363,9 @@ Convert RGB colour string to hex
 
 #### Parameters
 
-*   `rgb` **[string][64]** The RGB value
+*   `rgb` **[string][65]** The RGB value
 
-Returns **[string][64]** The hex value
+Returns **[string][65]** The hex value
 
 ## DSFReportTemplate
 
@@ -454,52 +461,54 @@ The main report
 
 [43]: #pa11ysettings
 
-[44]: #page
+[44]: #pa11yhideelements
 
-[45]: #reportpath
+[45]: #page
 
-[46]: #isincognito
+[46]: #reportpath
 
-[47]: #reportjson
+[47]: #isincognito
 
-[48]: #screenshotwidths
+[48]: #reportjson
 
-[49]: #skiplog
+[49]: #screenshotwidths
 
-[50]: #servicedesignsystemversion
+[50]: #skiplog
 
-[51]: #performheadsection
+[51]: #servicedesignsystemversion
 
-[52]: #performlighthouse
+[52]: #performheadsection
 
-[53]: #performdsfchecks
+[53]: #performlighthouse
 
-[54]: #performpa11ychecks
+[54]: #performdsfchecks
 
-[55]: #dsfchecklevel
+[55]: #performpa11ychecks
 
-[56]: #dsftestoptions
+[56]: #dsfchecklevel
 
-[57]: #timeout
+[57]: #dsftestoptions
 
-[58]: #parameters-17
+[58]: #timeout
 
-[59]: #rgb2hex
+[59]: #parameters-17
 
-[60]: #parameters-18
+[60]: #rgb2hex
 
-[61]: #dsfreporttemplate
+[61]: #parameters-18
 
-[62]: #mainreport
+[62]: #dsfreporttemplate
 
-[63]: https://pptr.dev/
+[63]: #mainreport
 
-[64]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[64]: https://pptr.dev/
 
-[65]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[65]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[66]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[66]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 
-[67]: https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
+[67]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
-[68]: https://github.com/GoogleChrome/lighthouse/blob/master/docs/configuration.md
+[68]: https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
+
+[69]: https://github.com/GoogleChrome/lighthouse/blob/master/docs/configuration.md

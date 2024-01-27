@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.1.9]- 2024-01-27
+## Added
+- Added `pa11yHideElements` option
+
+### Changed
+- Sticky side menu on report
+
+### Fixed
+- Fixed filename for screenshots and head files when url has the `/` character
+
 ## [v1.1.8]- 2023-11-07
 ### Fixed
 - Fixed semver vulnerability Upgrade @babel/traverse
