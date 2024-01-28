@@ -395,7 +395,7 @@ export class DSFTesting {
         //set view port (resolution)
         await this.page.setViewport({ width: width, height: 100, deviceScaleFactor: 1, });
         //construct key for report
-        const key = page.toString().replaceAll("/", '_').replaceAll("?", '_') + (filename!=''?'.':'')+ filename + '.' + width ;
+        const key = page.toString().replace(/\//g, '_').replace(/\?/g, '_') + (filename!=''?'.':'')+ filename + '.' + width ;
         //construct filename
         const fname = key +'.png'
         //take screenshoot
@@ -515,7 +515,7 @@ export class DSFTesting {
      */
     async getHeadSection(page='',path) {
         //construct key for report
-        const key = page.toString().replaceAll("/", '_').replaceAll("?", '_') + '.head' + (path!=''?'.':'')+ path;
+        const key = page.toString().replace(/\//g, '_').replace(/\?/g, '_') + '.head' + (path!=''?'.':'')+ path;
         //construct filename
         const fname = key +'.txt'
         //get head section
