@@ -28,6 +28,7 @@ export class DSFReportTemplate {
                 .condition-true{background-color: green;color:white;}
                 .condition-false{background-color: red;color:white;}
                 .inline-code{font-family: monospace;}
+                .sticky-side-bar{position: -webkit-sticky;position: sticky;top: 0; overflow-y: auto; max-height: 100vh;}
                 @media print {
                     .page-break-after {page-break-after: always;}
                   }
@@ -36,13 +37,15 @@ export class DSFReportTemplate {
             </head>
             <body class="c">
             <div class="3 col">
-                <ul>
-                {{#pages}}
-                    <li>
-                        <a href="#{{id}}">{{id}}</a>
-                    </li>
-                {{/pages}}
-                </ul>
+                <div class="sticky-side-bar">
+                    <ul>
+                    {{#pages}}
+                        <li>
+                            <a href="#{{id}}">{{id}}</a>
+                        </li>
+                    {{/pages}}
+                    </ul>
+                </div>
             </div>
             <div class="9 col">
             <h1>{{testName}}</h1>

@@ -52,7 +52,7 @@ describe('Testing DSFTesting class', () => {
 
     it('5.1 `DSFStandardPageTest` should run real test on a real page', async () => {
         //-------------------- START TESTS -------------------------
-        const pageName = 'root';
+        let pageName = 'root';
         //go to page
         await dsfTesting.page.goto('http://localhost:3000/index.html', { waitUntil: 'networkidle0', });
         //run the batch of tests and reports fo this page 
@@ -70,7 +70,7 @@ describe('Testing DSFTesting class', () => {
         expect(checkObject).to.equal("4.3.1.lang");
     });
     it('5.2 `DSFStandardPageTest` with version changed', async () => {
-        const pageName = 'version100';
+        let pageName = 'version100';
         dsfTesting.serviceDesignSystemVersion = '100.0.0';
         //go to page
         await dsfTesting.page.goto('http://localhost:3000/index.html', { waitUntil: 'networkidle0', });
@@ -98,7 +98,7 @@ describe('Testing DSFTesting class', () => {
         expect(checkObject).to.equal("4.3.1.lang");
     });
     it('5.3 `DSFStandardPageTest` with perform options in false', async () => {
-        const pageName = 'perform';
+        let pageName = 'perform';
         dsfTesting.performHeadSection = false;
         dsfTesting.performLighthouse = false;
         dsfTesting.performDSFChecks = false;
@@ -123,7 +123,7 @@ describe('Testing DSFTesting class', () => {
     });
 
     it('5.4 `DSFStandardPageTest` with `DSFCheckLevel = 1`', async () => {
-        const pageName = 'Level_1';
+        let pageName = 'Level_1';
         dsfTesting.performHeadSection = false;
         dsfTesting.performLighthouse = false;
         dsfTesting.performDSFChecks = true;

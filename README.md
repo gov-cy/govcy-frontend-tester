@@ -301,6 +301,12 @@ DSFTest.lighthouseFlowConfigContext = {
  */
 DSFTest.pa11ySettings = {standard: 'WCAG2AA',ignoreUrl: true,wait: 10000};
 /**
+ * Default pa11y hideElements. These elements will be ignored when running accessibility checks
+ * Default value = `""`
+ * Example to ignore DS known issues `DSFTest.pa11yHideElements = "html > body > div:nth-child(2) > div > div > header > form, #culture-picker";`
+ */
+DSFTest.pa11yHideElements = "";
+/**
  * The path of the reports. Can be used to set the folder where the reports are saved. 
  * Note: the folder needs to exist.
  */
