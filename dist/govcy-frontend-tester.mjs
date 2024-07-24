@@ -51,7 +51,7 @@ export class DSFTesting {
             this.browser = await puppeteer.launch(this.puppeteerSettings);
             if (this.isIncognito) {
                 //run in incognito mode
-                this.context = await this.browser.createIncognitoBrowserContext();
+                this.context = await this.browser.createBrowserContext();
                 //new page
                 this.page = await this.context.newPage();
             } else {
