@@ -1,6 +1,6 @@
 {
   "name": "@gov-cy/govcy-frontend-tester",
-  "version": "1.1.11",
+  "version": "1.1.12",
   "description": "Front end automated tests based on gov.cy design system.",
   "main": "./dist/govcy-frontend-tester.mjs",
   "author": "DSF Team",
@@ -26,8 +26,8 @@
     "handlebars": "^4.7.7",
     "lighthouse": "^9.5.0",
     "node-fetch": "^3.2.10",
-    "pa11y": "^6.2.3",
-    "puppeteer": "^13.5.2",
+    "pa11y": "^8.0.0",
+    "puppeteer": "^22.13.1",
     "semver": "^7.3.7"
   },
   "files": [
@@ -41,16 +41,6 @@
     "mocha": "^10.2.0"
   },
   "overrides": {
-    "pa11y": {
-      "semver": ">=7.3.7"
-    },
-    "lighthouse": {
-      "semver": ">=7.3.7",
-      "configstore": {
-        "make-dir": {
-          "semver": ">=7.3.7"
-        }
-      }
-    }
+    "ws": ">=8.17.1"
   }
 }
