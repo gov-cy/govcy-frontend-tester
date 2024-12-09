@@ -700,7 +700,7 @@ export class DSFTesting {
      * What version of the design system was the service build on. 
      * This will make sure the correct checks are made 
      */
-    serviceDesignSystemVersion = `2.1.1`
+    serviceDesignSystemVersion = `3.0.0`
     
     /**
      * Whether on not to get the head section
