@@ -1,6 +1,6 @@
 {
   "name": "@gov-cy/govcy-frontend-tester",
-  "version": "1.1.13",
+  "version": "1.2.0",
   "description": "Front end automated tests based on gov.cy design system.",
   "main": "./dist/govcy-frontend-tester.mjs",
   "author": "DSF Team",
