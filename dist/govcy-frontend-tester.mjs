@@ -533,12 +533,17 @@ export class DSFTesting {
      * @returns computed styles object (check out https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle for more)
      */
     async getComputedStyle(selector,property) {
-        //console.log(selector);
-        const data = await this.page.evaluate((e,f) => {
-            const elements = document.querySelector(e);
-            return window.getComputedStyle(elements).getPropertyValue(f);
-        },selector,property);
-        return data;
+        try {
+            //console.log(selector);
+            const data = await this.page.evaluate((e,f) => {
+                const elements = document.querySelector(e);
+                return window.getComputedStyle(elements).getPropertyValue(f);
+            },selector,property);
+            return data;
+        } catch(e) {
+            console.error('Error [getElementAttribute]: ' +  e.message);
+            return "";
+        }
     }
 
     /**
@@ -597,8 +602,13 @@ export class DSFTesting {
      * @returns Array of attribute values
      */
     async getElementAttributeArray(selector,attribute) {
-        //return await this.page.$eval(selector, element=> element[attribute])
-        return await this.page.$$(selector, (element,a)=> element[a],attribute)
+        try {
+            //return await this.page.$eval(selector, element=> element[attribute])
+            return await this.page.$$(selector, (element,a)=> element[a],attribute)
+        } catch(e){
+            console.error('Error [getElementAttributeArray]: ' +  e.message);
+            return [];
+        }
     }
 
     /**
@@ -609,8 +619,13 @@ export class DSFTesting {
      * @returns attribute value
      */
     async getElementAttribute(selector,attribute) {
-        //return await this.page.$eval(selector, element=> element[attribute])
-        return await this.page.$eval(selector, (element,a)=> element[a],attribute)
+        try {
+            //return await this.page.$eval(selector, element=> element[attribute])
+            return await this.page.$eval(selector, (element,a)=> element[a],attribute)
+        } catch(e){
+            console.error('Error [getElementAttribute]: ' +  e.message);
+            return "";
+        }
     }
 
     /**
