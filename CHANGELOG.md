@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.1.13]- 2024-12-09
+### Fixed
+- Updated npm packages to fix CVE-2024-47764
+
 ## [v1.1.12]- 2024-07-24
 ### Fixed
 - Updated npm packages to fix `ws` vulnerability (https://github.com/advisories/GHSA-3h5v-q93c-6h6q)
