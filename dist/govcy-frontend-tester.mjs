@@ -2,7 +2,7 @@ import fs from 'fs';
 import Handlebars from 'handlebars';
 import lighthouse from 'lighthouse';
 import puppeteer from 'puppeteer';
-import { startFlow } from 'lighthouse/lighthouse-core/fraggle-rock/api.js';
+import { startFlow } from 'lighthouse';
 import pa11y  from 'pa11y';
 import fetch from 'node-fetch';
 import https from 'https';
