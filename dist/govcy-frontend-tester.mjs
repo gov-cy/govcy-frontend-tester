@@ -647,7 +647,7 @@ export class DSFTesting {
      * Default puppeteer Settings
      * Default value = `{ headless: true, args: ['--ignore-certificate-errors'], slowMo: 0 }`
      */
-    puppeteerSettings = { headless: true, args: ['--ignore-certificate-errors'], slowMo: 0 };
+    puppeteerSettings = { headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox','--ignore-certificate-errors'], slowMo: 0 };
 
     /**
      * 
