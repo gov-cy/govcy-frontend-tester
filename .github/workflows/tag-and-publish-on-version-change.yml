@@ -6,13 +6,18 @@ on:
       - main
     paths:
       - '**'
+# 🔸ADDED - enables npm auth via OIDC trusted publisher
+permissions:
+  id-token: write  # Required for OIDC
+  contents: write
+
 jobs:
   # Duplicated from `.github/workflows/version-sanity-checks.yml` could use https://github.blog/2022-02-10-using-reusable-workflows-github-actions ?
   tag-and-publish-on-version-change:
     name: Tag and publish on version change
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: EndBug/version-check@v2.1.0
         with:
           static-checking: localIsNew
@@ -51,13 +56,20 @@ jobs:
             })
       # Publish on npm
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: '18.x'
+          node-version: '20'
           registry-url: 'https://registry.npmjs.org'
+          # 🔸ADDED - enables npm auth via OIDC trusted publisher
+          scope: '@gov-cy'
+          always-auth: true
+      - name: Test OIDC connection
+        run: npm publish --provenance --access public --dry-run
+      # Ensure npm 11.5.1 or later is installed
+      - name: Update npm
+        run: npm install -g npm@latest
       - name: Install dependencies 
-        run: npm install
+        run: npm ci
       - name: Publish package on NPM 📦
-        run: npm publish --access=public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --provenance --access=public
+        # With the change to use Trusted Publisher the NPM TOKEN is no longer needed
