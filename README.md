@@ -1,5 +1,15 @@
 ![npm (scoped)](https://img.shields.io/npm/v/@gov-cy/govcy-frontend-tester) ![GitHub](https://img.shields.io/github/license/gov-cy/govcy-frontend-tester) [![](https://github.com/gov-cy/govcy-frontend-tester/actions/workflows/unit-test.yml/badge.svg)](https://github.com/gov-cy/govcy-frontend-tester/actions/workflows/unit-test.yml) [![](https://github.com/gov-cy/govcy-frontend-tester/actions/workflows/tag-and-publish-on-version-change.yml/badge.svg)](https://github.com/gov-cy/govcy-frontend-tester/actions/workflows/tag-and-publish-on-version-change.yml)
 
+> [!WARNING]
+> 
+> **⚠️ This Package Is No Longer Maintained**
+> 
+> This repository is no longer maintained and will not receive updates.
+> 
+> It may not work with newer Node.js or dependency versions.
+> 
+> Please do not use this package in new projects.
+
 `govcy-frontend-tester` is an npm package that can be used to perform front end tests in terms of the accessibility and design guidelines established by the Digital Services Factory (DSF) Cyprus. It is designed to help developers and QAs test their online services based on the [gov.cy design system](https://gov-cy.github.io/govcy-design-system-docs/) and speed up the assurance process.
 
 Note that this package does not substitute the DSF assurance process and it does not perform all possible checks required by DSF.  
